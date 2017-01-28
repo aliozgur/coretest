@@ -32,10 +32,13 @@ namespace WebTest.Controllers
             return View();
         }
 
-        public IActionResult Test(string value)
-        {
+        public IActionResult Test(string value)        
+        {            
+            if(String.IsNullOrWhiteSpace(value))
+                return Content("Error : String is null or empty");
+
             var len = value.Length;
-            return Content($"<div>Value is '{value}', length is {len}</div>");
+            return Content($"Value is {value}, length is {len}");
         }
     }
 }
